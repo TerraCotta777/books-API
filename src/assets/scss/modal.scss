@@ -1,0 +1,31 @@
+.modal {
+  &-content {
+    background: hsla(0deg, 0%, 100%, 0.55);
+    backdrop-filter: blur(30px);
+  }
+
+  .form {
+    &__toggle {
+			padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      label {
+        margin-bottom: 8px;
+      }
+
+      & .form-check-input {
+        width: 80px;
+        height: 38px;
+        display: block;
+        margin: 0;
+      }
+    }
+
+    &__button {
+			width: 70%;
+    }
+  }
+}
+

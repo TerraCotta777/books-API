@@ -18,7 +18,8 @@ module.exports = {
     paths: PATHS,
   },
   entry: {
-    app: PATHS.src,
+    index: `${PATHS.src}/assets/js/index.js`,
+    dashboard: `${PATHS.src}/assets/js/dashboard.js`,
   },
   output: {
     path: PATHS.dist,
@@ -67,20 +68,19 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    alias: {
-      "~": PATHS.src,
-      "@": `${PATHS.src}/js`,
-      images: PATHS.src + "/assets/img/",
-      icons: PATHS.src + "/assets/img/icons/",
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     "~": PATHS.src,
+  //     "@": `${PATHS.src}/js`,
+  //   },
+  // },
   plugins: [
     ...PAGES.map(
       (page) =>
         new HtmlWebpackPlugin({
           template: `${PAGES_DIR}/${page}`,
           filename: `./${page}`,
+          chunks: [`${page.replace(/\.html/, "")}`],
         })
     ),
   ],
