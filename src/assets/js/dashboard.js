@@ -3,43 +3,40 @@ import * as bootstrap from "bootstrap";
 import "../scss/main.scss";
 import { createFaveButton, createDeleteButton } from "./utils";
 import { createBook } from "./create";
-import { updateBook } from "./update";
+import { getOneBook, updateBook } from "./update";
 import { deleteBook } from "./delete";
+import { fetchOptions } from "./service";
+import { createButton, logoutButton, modal } from "./tag-variables";
 
-const logoutButton = document.querySelector("#logoutButton");
-const createButton = document.querySelector("#createButton");
-const booksDiv = document.querySelector(".dashboard__books");
 logoutButton.addEventListener("click", () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   window.location.href = "/";
 });
 
-const fetchOptions = {
-  queryString: "http://localhost:1717/books",
-  headers: {
-    "Content-Type": "application/json;charset=utf-8",
-    "X-Auth": localStorage.getItem("token"),
-  },
-};
+modal.addEventListener("hidden.bs.modal", (event) => {
+  modal.querySelectorAll("input").forEach((input) => (input.value = ""));
+});
 
+export const bookModal = bootstrap.Modal.getOrCreateInstance(modal);
 
-
-
-const getBooks = () => {
-  booksDiv.textContent = "";
-  fetch(fetchOptions.queryString, {
+export const getBooks = async () => {
+  const booksDiv = document.querySelector(".dashboard__books");
+  booksDiv.innerHTML = "";
+  const response = await fetch(fetchOptions.queryString, {
     method: "GET",
     headers: fetchOptions.headers,
-  })
-    .then((response) => response.json())
-    .then((books) => {
-      books.forEach((book) => {
-        const faveButton = createFaveButton(book.isFavorite, updateBook);
-        const deleteButton = createDeleteButton((e) => deleteBook(fetchOptions, getBooks, e));
-        const bookDiv = document.createElement("div");
-        bookDiv.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-4");
-        bookDiv.innerHTML = `<div id="${book.id}" class="card dashboard__card card-has-bg click-col">
+  });
+  const books = await response.json();
+  booksDiv.innerHTML = "";
+  books.forEach((book) => {
+    const faveButton = createFaveButton(book.isFavorite, (e) =>
+      getOneBook(book.id, e)
+    );
+    const deleteButton = createDeleteButton((e) => getOneBook(book.id, e));
+    const bookDiv = document.createElement("div");
+    bookDiv.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-4");
+    bookDiv.innerHTML = `<div id="${book.id}" class="card dashboard__card card-has-bg click-col">
 						<div class="card-img-overlay d-flex flex-column">
 							<div class="card-body d-flex flex-column justify-content-between">
 								<h4 class="card-title mt-0">${book.name}</h4>
@@ -47,16 +44,14 @@ const getBooks = () => {
 							</div>
 						</div>
 					</div>`;
-        bookDiv
-          .querySelector(".dashboard__card")
-          .append(faveButton, deleteButton);
-        booksDiv.append(bookDiv);
-      });
-    });
+    bookDiv.querySelector(".dashboard__card").append(faveButton, deleteButton);
+    booksDiv.append(bookDiv);
+    bookDiv.addEventListener("click", (e) => getOneBook(book.id, e));
+  });
 };
 
 getBooks();
 
 createButton.addEventListener("click", () => {
-  createBook(fetchOptions, getBooks);
+  createBook(fetchOptions, getBooks, bookModal);
 });

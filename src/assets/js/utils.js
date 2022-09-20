@@ -16,7 +16,14 @@ export const createDeleteButton = (func) => {
 };
 
 export const validate = (input) => {
-  if (input.value.trim() === "") {
+  if (
+    input.dataset.name === "publishYear" &&
+    input.value &&
+    input.value.length !== 4
+  ) {
+    input.classList.add("is-invalid");
+    return false;
+  } else if (input.value.trim() === "" && input.dataset.name === "required") {
     input.classList.add("is-invalid");
     return false;
   } else {

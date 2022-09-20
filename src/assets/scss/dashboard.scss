@@ -1,5 +1,5 @@
 .dashboard {
-	min-height: 100%;
+  min-height: 100%;
   background-color: #4158d0;
   background-image: linear-gradient(
     43deg,
@@ -8,6 +8,31 @@
     #ffcc70 100%
   );
   background-repeat: no-repeat;
+
+	&__buttons-wrapper {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+  &__button {
+    margin: 10px;
+		padding: 6px 20px;
+		border: 0;
+		border-radius: 10px;
+    background-color: transparent;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    background: hsla(0, 0%, 100%, 0.55);
+    backdrop-filter: blur(30px);
+		transition: background 200ms ease;
+
+		img {
+			transform: translateY(-2px);
+		}
+
+		&:hover {
+			background: hsla(0, 0%, 100%, 0.85);
+		}
+  }
 
   &__wrapper {
     margin: 1vh;

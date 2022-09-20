@@ -7,7 +7,6 @@ const loginButton = login.querySelector("#loginButton");
 const signupLink = login.querySelector(".signup-link");
 
 const loginFunc = (data) => {
-  console.log(data);
   if (data.token) {
     localStorage.setItem("user", JSON.stringify(data.data));
     localStorage.setItem("token", data.token);

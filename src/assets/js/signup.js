@@ -9,7 +9,6 @@ const signupButton = document.querySelector("#signupButton");
 const errorMessage = document.querySelectorAll(".error-message");
 
 const signupFunc = (data) => {
-  console.log(data);
   if (data.token) {
     localStorage.setItem("token", data.token);
     window.location.href = "dashboard.html";
@@ -32,7 +31,6 @@ const signupValidator = (e) => {
       age: signupAgeInput.value,
       firstName: signupNameInput.value,
     };
-    console.log(user);
     fetch(`http://localhost:1717/signin`, {
       method: "POST",
       headers: {

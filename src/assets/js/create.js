@@ -1,23 +1,22 @@
 import { bookForm } from "./bookForm";
+import { bookModal, getBooks } from "./dashboard";
+import { fetchOptions } from "./service";
+import { modalTitle, submitBookButton } from "./tag-variables";
 
-const createBookButton = document.querySelector("#createBookButton");
-
-export const createBook = (fetchOptions, getBooks) => {
-  const createBookHandler = (e) => {
+export const createBook = () => {
+  modalTitle.textContent = "Add new book";
+  submitBookButton.addEventListener("click", async (e) => {
     e.preventDefault();
     const book = bookForm();
 
     if (book) {
-      fetch(fetchOptions.queryString + "/create", {
+      await fetch(fetchOptions.queryString + "/create", {
         method: "POST",
         headers: fetchOptions.headers,
         body: JSON.stringify(book),
-      })
-        .then((response) => response.json())
-        .then((message) => console.log(message));
+      });
       getBooks();
+      bookModal.hide();
     }
-  };
-	
-  createBookButton.addEventListener("click", createBookHandler);
+  });
 };

@@ -15,12 +15,16 @@
         margin-bottom: 8px;
       }
 
-      & .form-check-input {
+      .form-check-input {
         width: 80px;
         height: 38px;
         display: block;
         margin: 0;
       }
+
+		#publishYearInput:invalid {
+			color: red;
+		}
     }
 
     &__button {

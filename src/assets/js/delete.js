@@ -1,9 +1,11 @@
-export const deleteBook = (fetchOptions, getBooks, e) => {
-  const id = e.target.parentElement.id;
-  fetch(`${fetchOptions.queryString}/delete/${id}`, {
+import { getBooks } from "./dashboard";
+import { fetchOptions } from "./service";
+
+export const deleteBook = async (id) => {
+  await fetch(`${fetchOptions.queryString}/delete/${id}`, {
     method: "DELETE",
     headers: fetchOptions.headers,
-  })
-    .then((response) => response.json())
-    .then(getBooks());
+  });
+
+  getBooks();
 };

@@ -1,9 +1,29 @@
 .cascading-right {
-  margin-right: -50px;
+  margin-right: -100px;
+}
+
+.authorization {
+  &__img {
+    img {
+      object-fit: cover;
+    }
+  }
+
+	.card {
+		&:hover {
+			transform: none
+		}
+	}
 }
 
 @media (max-width: 991.98px) {
   .cascading-right {
     margin-right: 0;
   }
+
+	.authorization {
+		&__img {
+			display: none;
+		}
+	}
 }

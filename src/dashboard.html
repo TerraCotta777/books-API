@@ -7,32 +7,39 @@
     <title>Dashboard</title>
   </head>
   <body class="dashboard">
-    <button type="button" id="logoutButton">Logout</button>
-    <button
-      type="button"
-      id="createButton"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-    >
-      > Create
-    </button>
+    <div class="dashboard__buttons-wrapper">
+      <button
+        type="button"
+        id="createButton"
+        data-bs-toggle="modal"
+        data-bs-target="#createModal"
+        class="dashboard__button"
+      >
+        Create <img src="./assets/img/plus-circle.svg" alt="plus" />
+      </button>
+      <button type="button" id="logoutButton" class="dashboard__button">
+        Logout <img src="./assets/img/door-open.svg" alt="door" />
+      </button>
+    </div>
 
     <section class="dashboard__wrapper">
       <div class="container">
         <div class="row dashboard__books"></div>
       </div>
     </section>
+
+    <!-- Book modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="createModal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="createModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add new book</h5>
+            <h5 class="modal-title" id="createModalLabel">Add new book</h5>
             <button
               type="button"
               class="btn-close"
@@ -49,7 +56,12 @@
                 <!-- Book name input -->
                 <div class="form-outline mb-2">
                   <label class="form-label" for="bookNameInput">Name</label>
-                  <input type="text" id="bookNameInput" class="form-control" />
+                  <input
+                    type="text"
+                    id="bookNameInput"
+                    class="form-control"
+                    data-name="required"
+                  />
                   <div class="invalid-feedback">
                     Please print name of the book.
                   </div>
@@ -58,7 +70,12 @@
                 <!-- Author input -->
                 <div class="form-outline mb-2">
                   <label class="form-label" for="authorInput">Author</label>
-                  <input type="text" id="authorInput" class="form-control" />
+                  <input
+                    type="text"
+                    id="authorInput"
+                    class="form-control"
+                    data-name="required"
+                  />
                   <div class="invalid-feedback">
                     Please provide author of the book.
                   </div>
@@ -73,6 +90,7 @@
                     type="text"
                     id="publishHouseInput"
                     class="form-control"
+                    data-name="publishHouse"
                   />
                   <div class="invalid-feedback">
                     Please provide publish house of the book.
@@ -90,9 +108,10 @@
                         type="number"
                         id="publishYearInput"
                         class="form-control"
+                        data-name="publishYear"
                       />
                       <div class="invalid-feedback">
-                        Please print publish year.
+                        Please print valid publish year.
                       </div>
                     </div>
                   </div>
@@ -105,6 +124,7 @@
                         type="number"
                         id="pagesNumberInput"
                         class="form-control"
+                        data-name="pagesNumber"
                       />
                       <div class="invalid-feedback">
                         Please provide pages number.
@@ -115,7 +135,12 @@
 
                 <div class="form-outline mb-2">
                   <label class="form-label" for="genresInput">Genres</label>
-                  <input type="text" id="genresInput" class="form-control" />
+                  <input
+                    type="text"
+                    id="genresInput"
+                    class="form-control"
+                    data-name="genres"
+                  />
                   <div class="invalid-feedback">Please provide genres.</div>
                 </div>
 
@@ -131,6 +156,7 @@
                         type="text"
                         id="originalLanguageInput"
                         class="form-control"
+                        data-name="originalLanguage"
                       />
                       <div class="invalid-feedback">
                         Please write original language.
@@ -160,7 +186,7 @@
                 <button
                   type="submit"
                   class="form__button btn btn-primary btn-block mt-3"
-                  id="createBookButton"
+                  id="submitButton"
                 >
                   Save
                 </button>
