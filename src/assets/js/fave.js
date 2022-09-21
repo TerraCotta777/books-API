@@ -1,8 +1,7 @@
 import { getBooks } from "./dashboard";
 import { fetchOptions } from "./service";
-import { isFavorite } from "./tag-variables";
 
-export const fave = (id, isFavorite) => {
+export const fave = (id, isFavorite, e) => {
   fetch(fetchOptions.queryString + `/update/${id}`, {
     method: "PUT",
     headers: fetchOptions.headers,

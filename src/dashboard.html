@@ -7,19 +7,22 @@
     <title>Dashboard</title>
   </head>
   <body class="dashboard">
-    <div class="dashboard__buttons-wrapper">
-      <button
-        type="button"
-        id="createButton"
-        data-bs-toggle="modal"
-        data-bs-target="#createModal"
-        class="dashboard__button"
-      >
-        Create <img src="./assets/img/plus-circle.svg" alt="plus" />
-      </button>
-      <button type="button" id="logoutButton" class="dashboard__button">
-        Logout <img src="./assets/img/door-open.svg" alt="door" />
-      </button>
+    <div class="dashboard__header">
+      <div class="dashboard__username">User</div>
+      <div class="dashboard__buttons-wrapper">
+        <button
+          type="button"
+          id="createButton"
+          data-bs-toggle="modal"
+          data-bs-target="#createModal"
+          class="dashboard__button"
+        >
+          Create <img src="./assets/img/plus-circle.svg" alt="plus" />
+        </button>
+        <button type="button" id="logoutButton" class="dashboard__button">
+          Logout <img src="./assets/img/door-open.svg" alt="door" />
+        </button>
+      </div>
     </div>
 
     <section class="dashboard__wrapper">

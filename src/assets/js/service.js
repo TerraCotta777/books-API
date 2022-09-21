@@ -5,3 +5,5 @@ export const fetchOptions = {
     "X-Auth": localStorage.getItem("token"),
   },
 };
+
+export const authQueryString = "http://localhost:1717";

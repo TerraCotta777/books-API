@@ -1,10 +1,10 @@
+import { authQueryString } from "./service";
 import { validate } from "./utils";
 
 const login = document.querySelector("#login");
 const loginUsernameInput = login.querySelector("#username");
 const loginPasswordInput = login.querySelector("#password");
 const loginButton = login.querySelector("#loginButton");
-const signupLink = login.querySelector(".signup-link");
 
 const loginFunc = (data) => {
   if (data.token) {
@@ -27,7 +27,7 @@ const loginValidator = (e) => {
       username: loginUsernameInput.value,
       password: loginPasswordInput.value,
     };
-    fetch(`http://localhost:1717/login`, {
+    fetch(`${authQueryString}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",

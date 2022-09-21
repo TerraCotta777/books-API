@@ -1,7 +1,4 @@
 import "../scss/main.scss";
-
-
-
 import "./login";
 import "./signup";
 

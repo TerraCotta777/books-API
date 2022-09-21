@@ -8,30 +8,42 @@
     #ffcc70 100%
   );
   background-repeat: no-repeat;
-
-	&__buttons-wrapper {
+	
+	&__header {
+		padding: 10px 20px;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 	}
+
+	&__username {
+		font-size: 40px;
+		font-weight: 500;
+		color: #ffcc70;
+	}
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   &__button {
     margin: 10px;
-		padding: 6px 20px;
-		border: 0;
-		border-radius: 10px;
+    padding: 6px 20px;
+    border: 0;
+    border-radius: 10px;
     background-color: transparent;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
     background: hsla(0, 0%, 100%, 0.55);
     backdrop-filter: blur(30px);
-		transition: background 200ms ease;
+    transition: background 200ms ease;
 
-		img {
-			transform: translateY(-2px);
-		}
+    img {
+      transform: translateY(-2px);
+    }
 
-		&:hover {
-			background: hsla(0, 0%, 100%, 0.85);
-		}
+    &:hover {
+      background: hsla(0, 0%, 100%, 0.85);
+    }
   }
 
   &__wrapper {
@@ -46,12 +58,6 @@
     border-radius: 20px;
     min-height: 250px;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-
-    &:hover {
-      .dashboard__delete {
-        opacity: 1;
-      }
-    }
   }
 
   &__fave {
@@ -90,7 +96,7 @@
     right: 16px;
     width: 30px;
     height: 30px;
-    opacity: 0;
+    opacity: 1;
     border: none;
     background-color: transparent;
     background: url("../img/trash.svg") 0 0/100% 100% no-repeat;
@@ -106,6 +112,18 @@
   .dashboard {
     &__wrapper {
       margin: 10vh;
+    }
+
+    &__card {
+      &:hover {
+        .dashboard__delete {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__delete {
+      opacity: 0;
     }
   }
 }

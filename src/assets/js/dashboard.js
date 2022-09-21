@@ -3,15 +3,25 @@ import * as bootstrap from "bootstrap";
 import "../scss/main.scss";
 import { createFaveButton, createDeleteButton } from "./utils";
 import { createBook } from "./create";
-import { getOneBook, updateBook } from "./update";
-import { deleteBook } from "./delete";
+import { getOneBook } from "./update";
 import { fetchOptions } from "./service";
-import { createButton, logoutButton, modal } from "./tag-variables";
+import {
+  createButton,
+  logoutButton,
+  modal,
+  userNameHeader,
+} from "./tag-variables";
 
 logoutButton.addEventListener("click", () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   window.location.href = "/";
+});
+
+document.addEventListener("wheel", () => {
+  if (document.activeElement.type === "number") {
+    document.activeElement.blur();
+  }
 });
 
 modal.addEventListener("hidden.bs.modal", (event) => {
@@ -20,19 +30,28 @@ modal.addEventListener("hidden.bs.modal", (event) => {
 
 export const bookModal = bootstrap.Modal.getOrCreateInstance(modal);
 
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+userNameHeader.textContent = capitalizeFirstLetter(
+  JSON.parse(localStorage.getItem("user")).firstName
+);
+
 export const getBooks = async () => {
   const booksDiv = document.querySelector(".dashboard__books");
-  booksDiv.innerHTML = "";
   const response = await fetch(fetchOptions.queryString, {
     method: "GET",
     headers: fetchOptions.headers,
   });
   const books = await response.json();
+
   booksDiv.innerHTML = "";
   books.forEach((book) => {
-    const faveButton = createFaveButton(book.isFavorite, (e) =>
-      getOneBook(book.id, e)
-    );
+    const faveButton = createFaveButton(book.isFavorite, (e) => {
+      getOneBook(book.id, e);
+      return false;
+    });
     const deleteButton = createDeleteButton((e) => getOneBook(book.id, e));
     const bookDiv = document.createElement("div");
     bookDiv.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-4");
@@ -46,12 +65,14 @@ export const getBooks = async () => {
 					</div>`;
     bookDiv.querySelector(".dashboard__card").append(faveButton, deleteButton);
     booksDiv.append(bookDiv);
-    bookDiv.addEventListener("click", (e) => getOneBook(book.id, e));
+    bookDiv.addEventListener("click", (e) => {
+      getOneBook(book.id, e);
+    });
   });
 };
 
 getBooks();
 
 createButton.addEventListener("click", () => {
-  createBook(fetchOptions, getBooks, bookModal);
+  createBook();
 });

@@ -7,7 +7,6 @@ import {
   author,
   genres,
   isFavorite,
-  modal,
   modalTitle,
   name,
   originalLanguage,
@@ -18,6 +17,7 @@ import {
 } from "./tag-variables";
 
 export const getOneBook = async (id, e) => {
+  e.preventDefault();
   const response = await fetch(fetchOptions.queryString + `/${id}`, {
     method: "GET",
     headers: fetchOptions.headers,
@@ -28,6 +28,7 @@ export const getOneBook = async (id, e) => {
     deleteBook(id);
   } else if (e.target.classList.contains("dashboard__fave")) {
     fave(id, book.isFavorite);
+		
   } else {
     bookModal.show();
     modalTitle.textContent = "Book info";

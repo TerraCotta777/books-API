@@ -1,3 +1,4 @@
+export const userNameHeader = document.querySelector(".dashboard__username");
 export const modal = document.querySelector(".modal");
 export const name = modal.querySelector("#bookNameInput");
 export const author = modal.querySelector("#authorInput");
