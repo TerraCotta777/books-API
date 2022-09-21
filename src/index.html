@@ -6,5 +6,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books Api</title>
   </head>
-  <body></body>
+  <body class="vh-100">
+    <!-- Section: Design Block -->
+    <section class="text-center text-lg-start vh-100 authorization">
+      <div class="container py-4 vh-100">
+        <div class="row g-0 align-items-center vh-100">
+          <div id="signup" class="col-lg-6 mb-5 mb-lg-0 active-form">
+            <div class="card cascading-right">
+              <div class="card-body p-5 shadow-5 text-center">
+                <h2 class="fw-bold mb-5">Sign up</h2>
+                <p class="mb-5 error-message" style="display: none">
+                  This user already exists
+                </p>
+                <form>
+                  <!-- 2 column grid layout with text inputs for the first name and age -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Example1"
+                          >First name</label
+                        >
+                        <input
+                          type="text"
+                          id="nameInput"
+                          class="form-control"
+                        />
+                        <div class="invalid-feedback">
+                          Please provide a valid name.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="form3Example2"
+                          >Age</label
+                        >
+                        <input
+                          type="number"
+                          id="ageInput"
+                          class="form-control"
+                        />
+                        <div class="invalid-feedback">Please provide age.</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Username input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3"
+                      >Username</label
+                    >
+                    <input
+                      type="text"
+                      id="usernameInput"
+                      class="form-control"
+                    />
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="passwordInput"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      id="passwordInput"
+                      class="form-control"
+                    />
+                    <div class="invalid-feedback">Please provide password.</div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="passwordConfirmInput"
+                      >Confirm password</label
+                    >
+                    <input
+                      type="password"
+                      id="passwordConfirmInput"
+                      class="form-control"
+                    />
+
+                    <div class="invalid-feedback">Please confirm password.</div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block mb-4"
+                    id="signupButton"
+                  >
+                    Sign up
+                  </button>
+
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>
+                      or
+                      <button type="button" class="btn btn-link login-link">
+                        login
+                      </button>
+                      if you have an account:
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="login" class="col-lg-6 mb-5 mb-lg-0">
+            <div
+              class="card cascading-right"
+              style="
+                background: hsla(0, 0%, 100%, 0.55);
+                backdrop-filter: blur(30px);
+              "
+            >
+              <div class="card-body p-5 shadow-5 text-center">
+                <h2 class="fw-bold mb-5">Login</h2>
+                <p class="mb-5 error-message" style="display: none">
+                  Username or password is wrong
+                </p>
+                <form>
+                  <!-- Username input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3"
+                      >Username</label
+                    >
+                    <input type="text" id="username" class="form-control" />
+                    <div class="invalid-feedback">Please provide username.</div>
+                  </div>
+
+                  <!-- Password inputs -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-control" />
+
+                    <div class="invalid-feedback">Please provide password.</div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button
+                    type="submit"
+                    id="loginButton"
+                    class="btn btn-primary btn-block mb-4"
+                  >
+                    Login
+                  </button>
+
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>
+                      or
+                      <button type="button" class="btn btn-link signup-link">
+                        sign up
+                      </button>
+                      if you don't have an account:
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-5 mb-lg-0 vh-100 authorization__img">
+            <img
+              src="./assets/img/login-bg.jpeg"
+              class="w-100 vh-100 rounded-4 shadow-4"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Design Block -->
+  </body>
 </html>
